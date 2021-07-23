@@ -1,0 +1,38 @@
+<script type="text/javascript">
+	$('#btnsubmitregister').click((e)=>{
+		let firstname = $('#firstname').val()
+		let lastname = $('#lastname').val()
+		let username = $('#username').val()	
+		let email = $('#useremail').val()
+		let password1 = $('#password1').val()
+		let password2 = $('#password2').val()
+		let csrftoken = $('input[name=csrfmiddlewaretoken]').val()
+
+
+		if(firstname==''|| lastname==''|| username=='' || email=="" || password1=='' || password2==''){
+			alert('Please Fill all the Fields')
+		} else{
+			registerdata={firstname:firstname, lastname:lastname,
+				username:username, email:email, password1:password1, password2:password2, csrfmiddleware:csrftoken}
+				$.ajax({
+					headers: {
+						'X-CSRFToken':csrftoken
+					},
+					url:"{% url 'main:register' %}",
+					type:"POST",
+					data:registerdata,
+					success:(data)=>{
+						if (data.status==1){
+							window.location.href = "{% url 'main:index' %}"
+						}else if(data.status==0){
+
+							$('#messages-heading').css({'display':'block'})
+							$('#messages-heading').text(data.messages)
+							console.log(data.messages)
+
+						}
+					}
+				})
+			}
+		})
+</script>

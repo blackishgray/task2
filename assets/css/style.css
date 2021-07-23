@@ -1,0 +1,49 @@
+body {
+	background-color: pink;
+}
+
+#login-form{
+	justify-content: center;
+}
+
+.row{
+	justify-content: center;
+}
+
+.displayBadge{
+	margin-top: 5%; 
+	text-align :center;
+	width: 100%;
+	display: none;
+}
+
+#messages-heading{
+	display: none;
+}
+
+#password-para-chars{
+	display: none;
+}
+
+#password-para-num{
+	display: none;
+}
+
+#password-para-spl{
+	display: none;
+
+}
+
+#btnsubmitregister{
+	margin-top: 1em;
+	float: right;
+}
+
+#postform{
+	text-align: -webkit-center;
+	margin-top: 2rem;
+}
+
+#product-button{
+	float: right;
+}

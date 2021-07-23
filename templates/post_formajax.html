@@ -1,0 +1,31 @@
+<script type="text/javascript">
+	$(()=>{
+		$('#btnpost').click((e)=>{
+			let content = $('#content').val();
+			let csrftoken = $('input[name=csrfmiddlewaretoken]').val();
+
+			if (content == ''){
+				alert('Please fill the input field.')
+			} else {
+				postData = {content:content}
+
+				$.ajax({
+					headers : {
+						'X-CSRFToken':csrftoken
+					},
+					url: "{% url 'main:post_data' %}",
+					type:'POST',
+					data:postData,
+					success : (data)=>{
+						if (data.status==1){
+							window.location.href="{% url 'main:index' %}"
+						}else{
+							alert('Error! Please try again.')
+						}
+
+					}
+				})
+			}
+		})
+	})
+</script>

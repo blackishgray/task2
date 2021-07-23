@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+<html>
+<head>
+	{% block title %}<title>Login</title>{% endblock %}
+</head>
+<body>
+	{% block content %}
+	<div class="container mt-5">
+		<h2 class="text-center alert alert-danger" id="messages-heading"></h2>
+	</div>
+	<div class="container mt-5 login-form">
+		<div class="col-sm-4">
+			<form method="POST">
+				{% csrf_token %}
+				<div class="form-group">
+					<label for="username">Username:</label>
+					<input type="text" name="username" id="username" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="password1">Password:</label>
+					<input type="password" name="password" id="password" class="form-control">
+				</div>
+				<div class="text-center">
+					<input class="btn btn-primary" type='button' name='submit' value='Submit' id="btnsubmitlogin">
+				</div>
+			</form>
+		</div>
+	</div>
+	{% endblock %}
+</body>
+</html>

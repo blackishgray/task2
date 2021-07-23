@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	{% block title %}<title>Index</title>{% endblock %}
+</head>
+<body>
+	{% block content %}
+	<div class="container-fluid mt-6" id='postform'>
+		<div class="col-sm-6">
+			<h2 class="text-center alert alert-secondary"> Whats on Your Mind {{user.username}}</h2>
+			<form method="POST">
+				<div class="form-group">
+					{% csrf_token %}
+					{{form.as_p}}
+				</div>
+				<div class="form-group">
+					<input type="button" name="Submit" value='Submit' id="btnpost" class="btn btn-primary">
+				</div>
+			</form>
+		</div>
+	</div>
+	{% endblock %}
+</body>
+</html>

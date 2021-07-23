@@ -1,0 +1,65 @@
+
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	{% block title %}<title>Index</title>{% endblock %}
+</head>
+<body>
+	{% block content %}
+	<!-- div for messages -->
+	<div class="container mt-5">
+		<h2 class="text-center alert alert-danger" id="messages-heading"></h2>
+	</div>
+	<!-- form div begin -->
+	<div class="container mt-5 register-form-div">
+		<div class="row flex">
+			<div class="col-sm-4" class="card">
+				<h3 class="alert alert-info text-center">Register</h3>
+				<!-- Form Begin -->
+				<form id='registerform'  method="POST">
+					{% csrf_token %}
+					<div class="form-group">
+						<label for="firstname">First Name:</label>
+						<input type="text" name="firstname" id="firstname" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label for="lastname">Last Name:</label>
+						<input type="text" name="lastname" id="lastname" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label for="username">Username:</label>
+						<input type="text" name="username" id="username" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label for="email">Email:</label>
+						<input type="email" name="email" id="useremail" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label for="password1">Password:</label>
+						<input type="password" name="password1" id="password1" class="form-control" required>
+						<!-- password hidden rules -->
+						<p id="password-para-chars">The Password must be 8 characters</p>
+						<p id="password-para-num">The Password must contaion atleast 1 Number</p>
+						<p id="password-para-spl">The Password must contaion atleast 1 Special Character</p>
+						<!-- <progress value=0 max=100 min=0></progress> -->
+						<span id="StrengthDisp" class="badge displayBadge">Weak</span>
+						<!-- <span>Mak</span> -->
+					</div>
+					<div class="form-group">
+						<label for="password2">Confirm Password:</label>
+						<input type="password" name="password2" id="password2" class="form-control" required>
+					</div>
+					<div class="text-center">
+						<input class="btn btn-primary" type='button' name='submit' value='Submit' id="btnsubmitregister" disabled="disabled">
+					</div>
+				</form>
+				<!-- Form end -->
+			</div>
+		</div>
+	</div>
+	<!-- form div end -->
+	{% endblock %}
+</body>
+</html>

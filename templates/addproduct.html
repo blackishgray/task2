@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	{% block title %}<title>Add Products</title>{%  endblock %}
+</head>
+<body>
+	{% block content %}
+	<div class="container-fluid mt-5">
+		<div class="row">
+			<div class="col-sm-6">
+				<h3 class="text-center alert alert-danger">Add Product</h3>
+				<!-- form for product -->
+				<form class="POST">
+					{% csrf_token %}
+					{{form.as_p}}
+					<div class="form-group" id="product-button">
+						<input type="button"  name="Submit" value="Submit" id="btnproductsubmit" class="btn btn-primary">
+					</div>
+				</form>	
+				<!-- form end -->
+			</div>
+		</div>
+	</div>
+	{% endblock %}
+</body>
+</html>

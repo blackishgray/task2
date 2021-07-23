@@ -1,0 +1,39 @@
+<script type="text/javascript">
+	$(()=>{
+		$('#btnsubmitlogin').click((e)=>{
+			let username = $('#username').val()
+			let password = $('#password').val()
+			let csrftoken = $('input[name=csrfmiddlewaretoken]').val()
+
+			if(username=='' || password==''){
+				alert('Please fill all the details')
+			}else{
+				loginData = {username:username, password:password}
+
+				$.ajax({
+					headers: {
+						'X-CSRFToken':csrftoken
+					},
+					url:"{% url 'main:login' %}",
+					type:'POST',
+					data:loginData,
+					success:(data)=>{
+						if(data.status==1){
+							window.location.href="{% url 'main:index' %}"
+						}else if(data.status==0){
+							$('#messages-heading').css({'display':'block'})
+							$('#messages-heading').text(data.message)
+							console.log(data.message)
+						}
+					},
+					fail:()=>{
+						console.log('Fail')
+					}
+
+				})
+			}
+
+		})
+
+	})
+</script>

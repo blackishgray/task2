@@ -1,0 +1,57 @@
+
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	{% block title %}<title>Index</title>{% endblock %}
+</head>
+<body>
+	{% block content %}
+	
+	<!-- div for messages -->
+	<div class="container mt-5">
+		<h2 class="text-center alert alert-danger" id="messages-heading"></h2>
+	</div>
+	<div class="post_detail_info container mt-6">
+
+		<div class="">
+			<table class="table table-bordered table-hover">
+				<h3 class="text-center alert alert-success">Post Details</h3>
+				<thead>
+					<tr>
+						<th>User</th>
+						<th>Content</th>
+						<th>Created On</th>
+						<th>Updated On</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for i in post_data %}
+					<tr>
+						<td>{{i.user}}</td>
+						<td>{{i.content}}</td>
+						<td>{{i.created_at}}</td>
+						<td>{{i.updated_at}}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% if user.is_authenticated %}
+<h3 class="text-center alert alert-info">Make A Post!</h3>
+<h4 class="text-danger"><a href="/main/post_form">Post</a></h4>
+<!-- form div begin -->
+<h2> Hello {{ user.username }}</h2>
+<h4 class="text-center alert alert-info"><a href="/main/logout">Logout</a></h4>
+{% else %}
+<h4  class="text-center alert alert-info"><a href="/main/login">Login</a></h4>
+<h1 class="text-center alert alert-success">Not a user? Sign up using the link below !!</h1>
+<h4 class="text-center alert alert-secondary"><a href="/main/register">Register</h4>
+	{% endif %}
+	<!-- form div end -->
+	{% endblock %}
+</body>
+</html>
