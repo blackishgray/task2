@@ -16,4 +16,3 @@ class Product:
         if app_label in self.route_app_labels:
             return db == 'product_db'
         return None
-
