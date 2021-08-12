@@ -8,7 +8,7 @@
 </head>
 <body>
 	{% block content %}
-	
+
 	<!-- div for messages -->
 	<div class="container mt-5">
 		<h2 class="text-center alert alert-danger" id="messages-heading"></h2>
@@ -41,15 +41,16 @@
 	</div>
 </div>
 {% if user.is_authenticated %}
-<h3 class="text-center alert alert-info">Make A Post!</h3>
-<h4 class="text-danger"><a href="/main/post_form">Post</a></h4>
+<h3 class="text-center alert alert-info">Make A Post! {{ user.username}}</h3>
+<h4 class="text-danger"><a href="{% url 'main:post_form' %}">Post</a></h4>
 <!-- form div begin -->
-<h2> Hello {{ user.username }}</h2>
-<h4 class="text-center alert alert-info"><a href="/main/logout">Logout</a></h4>
+<h4 class="text-center alert alert-info"><a href="{% url 'main:logout' %}">Logout</a></h4>
+<h4 class="text-center alert alert-secondary"><a href="{% url 'product:productdata' %}">Product Page</h4>
+
 {% else %}
-<h4  class="text-center alert alert-info"><a href="/main/login">Login</a></h4>
+<h4  class="text-center alert alert-info"><a href="{% url 'main:login' %}">Login</a></h4>
 <h1 class="text-center alert alert-success">Not a user? Sign up using the link below !!</h1>
-<h4 class="text-center alert alert-secondary"><a href="/main/register">Register</h4>
+<h4 class="text-center alert alert-secondary"><a href="{% url 'main:register' %}">Register</h4>
 	{% endif %}
 	<!-- form div end -->
 	{% endblock %}

@@ -1,11 +1,11 @@
-from django.urls import path  
-from django.views.generic import TemplateView 
+from django.urls import path
+from django.views.generic import TemplateView
 
-from . import views  
+from . import views
 
-app_name = 'main' 
+app_name = 'main'
 
-#set urls path for the app 
+#set urls path for the app
 urlpatterns = [
 	path('', views.index, name='index'),
 	path('register', views.register, name='register'),

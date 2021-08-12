@@ -14,8 +14,8 @@
 				<thead>
 					<tr>
 						<th>Product Name</th>
-						<th>Product Weight</th>
-						<th>Product Price</th>
+						<th>Product Weight(gms)</th>
+						<th>Product Price(INR)</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -28,7 +28,7 @@
 					{% endfor %}
 				</tbody>
 			</table>
-			<h4><a href="/product/addproduct">Add Product</a></h4>
+			<h4><a href="{% url 'product:addproduct' %}">Add Product</a></h4>
 		</div>
 	</div>
 	{% endblock %}

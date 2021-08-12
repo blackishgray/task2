@@ -7,7 +7,7 @@ from .forms import PostForm
 
 # Create your views here.
 def index(request):
-	post_data = PostModel.objects.using('default').all()
+	post_data = PostModel.objects.using('default').all().order_by('-id')
 	mydict = {
 		'post_data':post_data,
 	}
@@ -23,7 +23,7 @@ def post_form(request):
 	}
 	return render(request, 'post_form.html', context=dict2)
 
-# funtion to save post data 
+# funtion to save post data
 def post_data(request):
 	print(request.method)
 	if request.method == 'POST':
@@ -64,7 +64,7 @@ def register(request):
 				return JsonResponse({'status':0, 'messages':mes})
 
 			else:
-				user = User.objects.create_user(username=username, password=password2, 
+				user = User.objects.create_user(username=username, password=password2,
 					email=email, first_name=first_name, last_name=last_name)
 				user.save()
 				# messages.info(request, 'User created')
@@ -99,4 +99,3 @@ def login(request):
 def logout(request):
 	auth.logout(request)
 	return redirect('main:index')
-

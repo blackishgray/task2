@@ -15,7 +15,7 @@ def productdata(request):
 def addproduct(request):
 	form = ProductForm()
 	myform = {
-		'form':form 
+		'form':form
 	}
 	return render(request, 'addproduct.html', context=myform)
 
