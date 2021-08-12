@@ -5,7 +5,7 @@ from .models import ProductModel
 
 @admin.register(ProductModel)
 class ProductModelAdmin(admin.ModelAdmin):
-	list_display = ('product_name', 'product_weight', 'product_price')
+	list_display = ('product_name', 'product_weight', 'product_price', 'created_at', 'updated_at')
 
 	using = 'product_db'
 
